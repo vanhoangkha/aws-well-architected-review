@@ -1,10 +1,10 @@
 # AWS KMS Default Keys - Hướng dẫn sử dụng
 
-## 🔐 Tổng quan về KMS Default Keys
+## Tổng quan về KMS Default Keys
 
 AWS cung cấp sẵn các AWS managed keys (default keys) cho từng service, giúp đơn giản hóa việc encryption mà không cần tạo custom keys.
 
-## 📋 Danh sách Default Keys cho Hospital System
+## Danh sách Default Keys cho Hospital System
 
 ### 1. RDS Default Key
 ```
@@ -33,7 +33,7 @@ Cost: Miễn phí (AWS managed)
 Usage: Log group encryption
 ```
 
-## ✅ Ưu điểm của Default Keys
+## Ưu điểm của Default Keys
 
 ### 1. **Chi phí**
 - Hoàn toàn miễn phí
@@ -50,7 +50,7 @@ Usage: Log group encryption
 - Tuân thủ compliance standards
 - Automatic key rotation
 
-## ⚠️ Hạn chế của Default Keys
+## Hạn chế của Default Keys
 
 ### 1. **Kiểm soát**
 - Không thể xóa hoặc disable
@@ -62,7 +62,7 @@ Usage: Log group encryption
 - Không thể track usage chi tiết
 - Không thể set custom permissions
 
-## 🔧 Cách sử dụng Default Keys
+## Cách sử dụng Default Keys
 
 ### 1. RDS Encryption
 ```yaml
@@ -91,7 +91,7 @@ Encryption: Enable
 KMS Key: (default) aws/logs
 ```
 
-## 🔍 Kiểm tra Default Keys
+## Kiểm tra Default Keys
 
 ### 1. Qua AWS Console
 ```
@@ -113,7 +113,7 @@ aws kms describe-key --key-id alias/aws/rds
 aws kms describe-key --key-id alias/aws/secretsmanager
 ```
 
-## 📊 So sánh Default vs Custom Keys
+## So sánh Default vs Custom Keys
 
 | Tính năng | Default Keys | Custom Keys |
 |-----------|--------------|-------------|
@@ -125,23 +125,23 @@ aws kms describe-key --key-id alias/aws/secretsmanager
 | **Audit detail** | Cơ bản | Chi tiết |
 | **Compliance** | AWS standard | Custom control |
 
-## 🏥 Khuyến nghị cho Hospital System
+## Khuyến nghị cho Hospital System
 
 ### Sử dụng Default Keys khi:
-- ✅ Môi trường development/testing
-- ✅ Cần setup nhanh và đơn giản
-- ✅ Không có yêu cầu compliance đặc biệt
-- ✅ Muốn tiết kiệm chi phí
-- ✅ Không cần cross-account access
+- Môi trường development/testing
+- Cần setup nhanh và đơn giản
+- Không có yêu cầu compliance đặc biệt
+- Muốn tiết kiệm chi phí
+- Không cần cross-account access
 
 ### Sử dụng Custom Keys khi:
-- ❌ Môi trường production với yêu cầu cao
-- ❌ Cần compliance audit chi tiết
-- ❌ Cần cross-account resource sharing
-- ❌ Cần custom key policies
-- ❌ Yêu cầu key rotation tùy chỉnh
+- Môi trường production với yêu cầu cao
+- Cần compliance audit chi tiết
+- Cần cross-account resource sharing
+- Cần custom key policies
+- Yêu cầu key rotation tùy chỉnh
 
-## 🔐 Security Best Practices với Default Keys
+## Security Best Practices với Default Keys
 
 ### 1. IAM Permissions
 ```json
@@ -186,7 +186,7 @@ aws kms describe-key --key-id alias/aws/secretsmanager
 }
 ```
 
-## 📝 Cấu hình trong Hospital System
+## Cấu hình trong Hospital System
 
 ### 1. RDS MySQL
 ```yaml
@@ -217,7 +217,7 @@ hospital/crm/db: aws/secretsmanager
 /aws/wafv2/hospital-waf: aws/logs
 ```
 
-## 🔄 Migration từ Custom Keys
+## Migration từ Custom Keys
 
 Nếu đã sử dụng custom keys và muốn chuyển sang default keys:
 
@@ -254,7 +254,7 @@ aws secretsmanager create-secret \
   # Default key sẽ được sử dụng tự động
 ```
 
-## 📈 Monitoring Default Key Usage
+## Monitoring Default Key Usage
 
 ### 1. CloudTrail Events
 ```json
@@ -284,18 +284,18 @@ Dimensions:
   - KeyId: aws-managed-key-id
 ```
 
-## 🎯 Kết luận
+## Kết luận
 
 Đối với Hospital Management System:
 
-**✅ Khuyến nghị sử dụng Default Keys vì:**
+**Khuyến nghị sử dụng Default Keys vì:**
 - Đơn giản setup và maintenance
 - Miễn phí hoàn toàn
 - Đáp ứng đủ yêu cầu bảo mật cơ bản
 - AWS managed và highly available
 - Phù hợp cho POC và production nhỏ
 
-**🔄 Có thể upgrade lên Custom Keys sau khi:**
+**Có thể upgrade lên Custom Keys sau khi:**
 - Hệ thống scale lớn
 - Cần compliance audit chi tiết
 - Yêu cầu cross-account access

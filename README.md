@@ -7,7 +7,7 @@
 
 Hướng dẫn chi tiết từng bước tạo hạ tầng AWS cho Hệ thống Quản lý Bệnh viện bằng AWS Console với MySQL RDS, Secrets Manager, KMS encryption và WAF protection.
 
-## 🏗️ Kiến trúc Hệ thống
+## Kiến trúc Hệ thống
 
 ```
                                     ┌─────────────────────────────────────┐
@@ -59,7 +59,7 @@ Hướng dẫn chi tiết từng bước tạo hạ tầng AWS cho Hệ thống 
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 Mục lục
+## Mục lục
 
 - [Yêu cầu trước khi bắt đầu](#yêu-cầu-trước-khi-bắt-đầu)
 - [Bước 1: Tạo KMS Key](#bước-1-tạo-kms-key)
@@ -76,7 +76,7 @@ Hướng dẫn chi tiết từng bước tạo hạ tầng AWS cho Hệ thống 
 - [Bước 12: Testing và Monitoring](#bước-12-testing-và-monitoring)
 - [Troubleshooting](#troubleshooting)
 
-## 🚀 Yêu cầu trước khi bắt đầu
+## Yêu cầu trước khi bắt đầu
 
 ### Tài khoản và Quyền
 - AWS Account với quyền Administrator
@@ -94,7 +94,7 @@ Network CIDR: 10.0.0.0/16
 Region: us-east-1 (N. Virginia)
 ```
 
-## 🔐 Bước 1: Sử dụng KMS Default Keys
+## Bước 1: Sử dụng KMS Default Keys
 
 ### 1.1 Xác nhận KMS Default Keys
 
@@ -118,7 +118,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
 
 **Lưu ý:** Sử dụng default keys giúp đơn giản hóa setup và giảm chi phí (AWS managed keys miễn phí).
 
-## 🌐 Bước 2: Tạo VPC và Network
+## Bước 2: Tạo VPC và Network
 
 ### 2.1 Tạo VPC
 
@@ -141,8 +141,8 @@ AWS cung cấp sẵn các default managed keys cho từng service:
    VPC endpoints: None
    
    DNS options:
-   ✅ Enable DNS hostnames
-   ✅ Enable DNS resolution
+   Enable DNS hostnames
+   Enable DNS resolution
    ```
 
 3. **Click "Create VPC"**
@@ -189,7 +189,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
 
 3. **Click "Create"**
 
-## 🔒 Bước 3: Tạo Secrets Manager
+## Bước 3: Tạo Secrets Manager
 
 ### 3.1 Tạo RDS Master Secret
 
@@ -270,7 +270,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
    Description: CRM database credentials
    ```
 
-## 🗄️ Bước 4: Tạo RDS MySQL
+## Bước 4: Tạo RDS MySQL
 
 ### 4.1 Tạo Security Group cho RDS
 
@@ -326,7 +326,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
    
    Credentials Settings:
    Master username: admin
-   ✅ Manage master credentials in AWS Secrets Manager
+   Manage master credentials in AWS Secrets Manager
    Master credentials: Use the hospital/rds/master secret
    ```
 
@@ -338,7 +338,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
    
    Storage type: General Purpose SSD (gp2)
    Allocated storage: 20 GiB
-   ✅ Enable storage autoscaling
+   Enable storage autoscaling
    Maximum storage threshold: 100 GiB
    ```
 
@@ -362,25 +362,25 @@ AWS cung cấp sẵn các default managed keys cho từng service:
    Initial database name: (để trống)
    
    Backup:
-   ✅ Enable automated backups
+   Enable automated backups
    Backup retention period: 7 days
    Backup window: 03:00-04:00 UTC
    
    Encryption:
-   ✅ Enable encryption
+   Enable encryption
    AWS KMS key: (default) aws/rds
    
    Monitoring:
-   ✅ Enable Enhanced monitoring
+   Enable Enhanced monitoring
    Monitoring Role: Default
    Granularity: 60 seconds
    
    Maintenance:
-   ✅ Enable auto minor version upgrade
+   Enable auto minor version upgrade
    Maintenance window: Sun 04:00-05:00 UTC
    
    Deletion protection:
-   ✅ Enable deletion protection
+   Enable deletion protection
    ```
 
 9. **Click "Create database"**
@@ -428,27 +428,27 @@ AWS cung cấp sẵn các default managed keys cho từng service:
 
 ---
 
-**📖 Hướng dẫn chi tiết các bước tiếp theo:**
+**Hướng dẫn chi tiết các bước tiếp theo:**
 - [Phần 2: Bước 5-12](docs/DEPLOYMENT-PART2.md) - Jump Host, Application Servers, ALB, SSL, WAF, CloudFront
 
-**📚 Tài liệu bổ sung:**
+**Tài liệu bổ sung:**
 - [KMS Default Keys](docs/KMS-DEFAULT-KEYS.md) - Hướng dẫn sử dụng AWS managed keys
 - [Cấu hình WAF chi tiết](docs/WAF-CONFIGURATION.md)
 - [Scripts tự động hóa](scripts/)
 
-**🔧 Scripts có sẵn:**
+**Scripts có sẵn:**
 - `scripts/wordpress-userdata.sh` - Setup WordPress với security
 - `scripts/crm-userdata.sh` - Setup CRM với security  
 - `scripts/wireguard-setup.sh` - Setup WireGuard VPN
 
-## 💡 Lưu ý quan trọng
+## Lưu ý quan trọng
 
 ### KMS Default Keys
-- ✅ **Miễn phí hoàn toàn** - Không tính phí key usage
-- ✅ **AWS managed** - Tự động rotation và maintenance  
-- ✅ **Đơn giản setup** - Không cần tạo custom keys
-- ✅ **Phù hợp POC/Production** - Đáp ứng yêu cầu bảo mật cơ bản
-- 📖 [Chi tiết về KMS Default Keys](docs/KMS-DEFAULT-KEYS.md)
+- **Miễn phí hoàn toàn** - Không tính phí key usage
+- **AWS managed** - Tự động rotation và maintenance
+- **Đơn giản setup** - Không cần tạo custom keys
+- **Phù hợp POC/Production** - Đáp ứng yêu cầu bảo mật cơ bản
+- [Chi tiết về KMS Default Keys](docs/KMS-DEFAULT-KEYS.md)
 
 ### Bảo mật
 - Thay đổi tất cả passwords mặc định
@@ -468,7 +468,7 @@ AWS cung cấp sẵn các default managed keys cho từng service:
 - Test disaster recovery procedures
 - Document recovery procedures
 
-## 📞 Hỗ trợ
+## Hỗ trợ
 
 Nếu gặp vấn đề trong quá trình setup:
 - Tạo issue trong repository này

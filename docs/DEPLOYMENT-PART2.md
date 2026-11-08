@@ -2,7 +2,7 @@
 
 Tiếp tục từ Bước 5 đến Bước 12
 
-## 🖥️ Bước 5: Tạo Jump Host và VPN
+## Bước 5: Tạo Jump Host và VPN
 
 ### 5.1 Tạo Key Pair
 
@@ -116,7 +116,7 @@ Tiếp tục từ Bước 5 đến Bước 12
      ```
    - DNS Server: `10.0.0.2`
 
-## 🖥️ Bước 6: Tạo Application Servers
+## Bước 6: Tạo Application Servers
 
 ### 6.1 Tạo IAM Role cho EC2
 
@@ -362,7 +362,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    systemctl start crm-app
    ```
 
-## ⚖️ Bước 7: Tạo Application Load Balancer
+## Bước 7: Tạo Application Load Balancer
 
 ### 7.1 Tạo ALB Security Group
 
@@ -470,7 +470,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    Actions: Forward to hospital-crm-tg
    ```
 
-## 🔐 Bước 8: Tạo SSL Certificate
+## Bước 8: Tạo SSL Certificate
 
 ### 8.1 Request Certificate
 
@@ -513,7 +513,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    - Default SSL certificate: Select certificate vừa tạo
    - Save changes
 
-## 🛡️ Bước 9: Tạo WAF Web ACL
+## Bước 9: Tạo WAF Web ACL
 
 ### 9.1 Tạo WAF Web ACL
 
@@ -615,7 +615,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    - Review và click "Create web ACL"
    - **Lưu lại Web ACL ARN**
 
-## 🌐 Bước 10: Tạo CloudFront Distribution
+## Bước 10: Tạo CloudFront Distribution
 
 ### 10.1 Create Distribution
 
@@ -668,7 +668,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    - Đợi 15-20 phút để deploy
    - **Lưu lại CloudFront domain name**
 
-## 🌍 Bước 11: Cấu hình DNS
+## Bước 11: Cấu hình DNS
 
 ### 11.1 Create Route 53 Records
 
@@ -698,7 +698,7 @@ Tiếp tục từ Bước 5 đến Bước 12
    Route traffic to: CloudFront distribution
    ```
 
-## 🧪 Bước 12: Testing và Monitoring
+## Bước 12: Testing và Monitoring
 
 ### 12.1 Test Applications
 
@@ -763,17 +763,17 @@ Tiếp tục từ Bước 5 đến Bước 12
 
 ---
 
-## ✅ Hoàn thành!
+## Hoàn thành!
 
 Hệ thống Hospital Management đã được setup hoàn chỉnh với:
 
-- ✅ KMS encryption cho RDS và Secrets
-- ✅ MySQL RDS với Multi-AZ
-- ✅ Secrets Manager cho credentials
-- ✅ WAF protection trước CloudFront
-- ✅ SSL/TLS certificates
-- ✅ VPN access cho admin
-- ✅ Monitoring và logging
+- KMS encryption cho RDS và Secrets
+- MySQL RDS với Multi-AZ
+- Secrets Manager cho credentials
+- WAF protection trước CloudFront
+- SSL/TLS certificates
+- VPN access cho admin
+- Monitoring và logging
 
 **Truy cập hệ thống:**
 - WordPress: https://www.hospital.com
