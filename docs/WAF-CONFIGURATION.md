@@ -2,7 +2,7 @@
 
 This document provides detailed instructions for configuring AWS WAF v2 to protect the Hospital Management System.
 
-## 🛡️ WAF Overview
+## WAF Overview
 
 AWS WAF (Web Application Firewall) protects your web applications from common web exploits and attacks. For the Hospital Management System, WAF provides:
 
@@ -13,7 +13,7 @@ AWS WAF (Web Application Firewall) protects your web applications from common we
 - **XSS Protection**: Cross-site scripting prevention
 - **Bot Protection**: Automated bot detection and blocking
 
-## 📋 WAF Web ACL Configuration
+## WAF Web ACL Configuration
 
 ### Step 1: Create Web ACL
 
@@ -245,7 +245,7 @@ Statement:
 Action: Allow
 ```
 
-## 📊 WAF Logging Configuration
+## WAF Logging Configuration
 
 ### Step 1: Enable Logging
 
@@ -302,7 +302,7 @@ fields @timestamp, httpRequest.country, action
 | sort count desc
 ```
 
-## 📈 Monitoring and Alerting
+## Monitoring and Alerting
 
 ### CloudWatch Metrics
 
@@ -346,7 +346,7 @@ Metric: Custom metric from logs
 Description: Alert when blocked requests from new countries exceed threshold
 ```
 
-## 🔧 WAF Tuning and Optimization
+## WAF Tuning and Optimization
 
 ### Performance Optimization
 
@@ -392,7 +392,7 @@ Description: Alert when blocked requests from new countries exceed threshold
    Action: Allow
    ```
 
-## 🚨 Incident Response
+## Incident Response
 
 ### Automated Response
 
@@ -437,7 +437,7 @@ Description: Alert when blocked requests from new countries exceed threshold
    - Update managed rule groups
    - Document new threats
 
-## 🔍 Testing and Validation
+## Testing and Validation
 
 ### WAF Testing Tools
 
@@ -476,7 +476,7 @@ Description: Alert when blocked requests from new countries exceed threshold
 - [ ] Logging functioning properly
 - [ ] Alerts triggering correctly
 
-## 📚 Best Practices
+## Best Practices
 
 ### Security Best Practices
 
