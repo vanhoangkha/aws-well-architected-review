@@ -5,14 +5,14 @@
 
 set -e
 
-echo "🔧 Starting WireGuard VPN setup with security enhancements..."
+echo "Starting WireGuard VPN setup with security enhancements..."
 
 # Update system
-echo "📦 Updating system packages..."
+echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
 # Install Docker and Docker Compose
-echo "🐳 Installing Docker..."
+echo "Installing Docker..."
 sudo apt install -y docker.io docker-compose curl jq ufw fail2ban
 
 # Start and enable Docker
@@ -23,7 +23,7 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 
 # Configure UFW firewall
-echo "🔥 Configuring firewall..."
+echo "Configuring firewall..."
 sudo ufw --force reset
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
@@ -33,7 +33,7 @@ sudo ufw allow 80/tcp comment 'WireGuard UI'
 sudo ufw --force enable
 
 # Configure fail2ban for SSH protection
-echo "🛡️ Configuring fail2ban..."
+echo "Configuring fail2ban..."
 sudo tee /etc/fail2ban/jail.local > /dev/null << 'EOF'
 [DEFAULT]
 bantime = 3600
@@ -70,12 +70,12 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 
 # Create WireGuard directory
-echo "📁 Creating WireGuard directory..."
+echo "Creating WireGuard directory..."
 mkdir -p ~/wireguard
 cd ~/wireguard
 
 # Create docker-compose.yaml with security enhancements
-echo "📝 Creating Docker Compose configuration..."
+echo "Creating Docker Compose configuration..."
 cat > docker-compose.yaml << 'EOF'
 version: "3"
 
@@ -193,24 +193,24 @@ chmod +x scripts/monitor-logs.sh
 sudo chown -R 1000:1000 config db logs scripts
 
 # Pull Docker images
-echo "📥 Pulling Docker images..."
+echo "Pulling Docker images..."
 docker-compose pull
 
 # Start WireGuard services
-echo "🚀 Starting WireGuard services..."
+echo "Starting WireGuard services..."
 docker-compose up -d
 
 # Wait for services to start
-echo "⏳ Waiting for services to start..."
+echo "Waiting for services to start..."
 sleep 30
 
 # Check service status
-echo "✅ Checking service status..."
+echo "Checking service status..."
 docker-compose ps
 
 # Get public IP
 PUBLIC_IP=$(curl -s http://checkip.amazonaws.com/ || curl -s http://ipinfo.io/ip)
-echo "🌐 Your public IP address is: $PUBLIC_IP"
+echo "Your public IP address is: $PUBLIC_IP"
 
 # Create security monitoring script
 cat > security-monitor.sh << 'EOF'
@@ -379,53 +379,53 @@ sudo systemctl enable wireguard-docker.service
 
 # Display completion message
 echo ""
-echo "🎉 WireGuard VPN setup with security enhancements completed successfully!"
+echo "WireGuard VPN setup with security enhancements completed successfully!"
 echo ""
-echo "📋 Access Information:"
+echo "Access Information:"
 echo "   WireGuard UI: http://$PUBLIC_IP"
 echo "   Username: admin"
 echo "   Password: HospitalVPN2024!"
 echo ""
-echo "🔧 Next Steps:"
+echo "Next Steps:"
 echo "1. Access the WireGuard UI in your browser"
 echo "2. Server settings are pre-configured for security"
 echo "3. Create VPN clients and download configuration files"
 echo "4. Test VPN connection from client devices"
 echo ""
-echo "🛡️ Security Features Enabled:"
-echo "   ✅ UFW Firewall configured"
-echo "   ✅ Fail2ban protection active"
-echo "   ✅ Container health monitoring"
-echo "   ✅ Log monitoring and alerting"
-echo "   ✅ Automated backups scheduled"
-echo "   ✅ Resource monitoring"
+echo "Security Features Enabled:"
+echo "   UFW Firewall configured"
+echo "   Fail2ban protection active"
+echo "   Container health monitoring"
+echo "   Log monitoring and alerting"
+echo "   Automated backups scheduled"
+echo "   Resource monitoring"
 echo ""
-echo "🔍 Management Commands:"
+echo "Management Commands:"
 echo "   ./manage-wireguard.sh status    - Check service status"
 echo "   ./manage-wireguard.sh logs      - View logs"
 echo "   ./manage-wireguard.sh restart   - Restart services"
 echo "   ./manage-wireguard.sh backup    - Create backup"
 echo "   ./manage-wireguard.sh security  - View security logs"
 echo ""
-echo "📊 Monitoring:"
+echo "Monitoring:"
 echo "   Security logs: /var/log/wireguard-security.log"
 echo "   Docker logs: /var/log/wireguard-docker.log"
 echo "   Fail2ban status: sudo fail2ban-client status"
 echo ""
-echo "⚠️  Important Security Notes:"
+echo "Important Security Notes:"
 echo "1. Change the default password after first login"
 echo "2. Regularly monitor security logs"
 echo "3. Keep Docker images updated"
 echo "4. Review VPN client access regularly"
 echo "5. Monitor for unusual connection patterns"
 echo ""
-echo "🏥 Your Hospital VPN is ready for secure access with WAF protection!"
+echo "Your Hospital VPN is ready for secure access with WAF protection!"
 
 # Final security check
-echo "🔍 Running final security check..."
+echo "Running final security check..."
 sudo ufw status
 sudo fail2ban-client status
 docker-compose ps
 
 echo ""
-echo "✅ Security check completed. System is ready for production use."
+echo "Security check completed. System is ready for production use."

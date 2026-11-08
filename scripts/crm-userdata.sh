@@ -315,13 +315,13 @@ def home():
     <body>
         <div class="container">
             <div class="header">
-                <h1>🏥 Hospital CRM System</h1>
+                <h1>Hospital CRM System</h1>
                 <p>Secure Staff and Patient Management Portal</p>
                 <button class="logout" onclick="logout()">Logout</button>
             </div>
             
             <div class="security-notice">
-                <strong>🔒 Security Notice:</strong> This system is protected by AWS WAF and monitors all activities. 
+                <strong>Security Notice:</strong> This system is protected by AWS WAF and monitors all activities. 
                 Unauthorized access attempts are logged and may result in IP blocking.
             </div>
             
@@ -385,7 +385,7 @@ def home():
                                 <div>Total Appointments</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number">🔒</div>
+                                <div class="stat-number"></div>
                                 <div>Secure & Protected</div>
                             </div>
                         `;
